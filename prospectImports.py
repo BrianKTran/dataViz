@@ -4,7 +4,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import os.path
 import pyodbc
-# import pysftp
+import pysftp
 
 
 sql_conn = pyodbc.connect('DRIVER={SQL Server}; SERVER=UAO-NEBULA; DATABASE=Staging; Authentication=SQL SERVER Authentication; Login=cfserver; Password=cf80767468; Trusted_Connection=yes') 
