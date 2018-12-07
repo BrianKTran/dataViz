@@ -6,6 +6,7 @@ import os.path
 import pyodbc
 import pysftp
 import urllib.parse
+import numpy
 
 sql_conn = pyodbc.connect('DRIVER={SQL Server}; SERVER=UAO-NEBULA; DATABASE=Staging; Authentication=SQL SERVER Authentication; Login=cfserver; Password=cf80767468; Trusted_Connection=yes') 
 query = "SELECT * FROM [STAGING].[dbo].[TalismaLeadCards]"
