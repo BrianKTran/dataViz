@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `import` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `import` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `country` VARCHAR(45) NOT NULL,
+  `country` CHAR(45) NOT NULL,
   `year` INT NOT NULL,
   `population` INT NOT NULL,
   PRIMARY KEY (`id`))

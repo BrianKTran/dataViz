@@ -29,6 +29,7 @@ with open(filename, r) as file:
     file.write(data)
     # print (data)
     file.close()
+    
 # Compare the population growth in the US and China
 data = pd.read_csv(filename) 
 data.country == 'United States'
@@ -47,7 +48,6 @@ plt.xlabel('year')
 plt.ylabel('population')
 plt.show()
 
-
 def insert_records(table, yourcsv, cursor, cnxn):
     #INSERT SOURCE RECORDS TO DESTINATION
     with open(yourcsv) as csvfile:
@@ -55,7 +55,9 @@ def insert_records(table, yourcsv, cursor, cnxn):
         header = next(csvFile)
         headers = map((lambda x: x.strip()), header)
         insert = 'INSERT INTO {} ('.format(table) + ', '.join(headers) + ') VALUES '
-        for row in csvFile:
+        for row in csvFile: 
+            string_quote = "Cote d'Ivoire"
+            newString    = string_quote.replace("Cote d'Ivoire", "Cote d Ivoire")
             values = map((lambda x: "'"+x.strip()+"'"), row)
             my_cursor.execute(insert +'('+ ', '.join(values) +');' )
             my_cnxn.commit() #must commit unless your sql database auto-commits
@@ -64,4 +66,5 @@ table = 'mydb.import'
 mycsv = 'countries.csv' # SET YOUR FILEPATH
 insert_records(table, mycsv, my_cursor, my_cnxn)
 my_cursor.close()
+
 
