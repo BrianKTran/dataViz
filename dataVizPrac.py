@@ -1,8 +1,14 @@
 #!/usr/bin/python
-
+# import pymssql
+import pymysql
 import pandas as pd
 from matplotlib import pyplot as plt
 import os.path
+
+
+conn = pymysql.connect(host='localhost', port=3306, user='bkt5031', passwd='Phili467', db='mydb')
+
+cur = conn.cursor()
 
 save_here = 'C:/Users/bkt5031/Desktop/dirPath'
 filename = 'countries.csv'
@@ -34,8 +40,10 @@ plt.xlabel('year')
 plt.ylabel('population')
 plt.show()
 
+cur.execute("SELECT * FROM import")
 
-
+print(cur)
+conn.close()
 
 # x = [1, 2, 3] 
 # y = [1, 4, 9]
