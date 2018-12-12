@@ -67,8 +67,8 @@ def insert_records(table, yourcsv, cursor, cnxn):
         insert = 'INSERT INTO {} ('.format(table) + ', '.join(headers) + ') VALUES '
         for row in csvFile: 
             
-            # string_quote = "Cote d'Ivoire"
-            # newString    = string_quote.replace("Cote d'Ivoire", "Cote d Ivoire")
+            string_quote = "Cote d'Ivoire"
+            newString    = string_quote.replace("Cote d'Ivoire", "Cote d Ivoire")
             values = map((lambda x: "'"+x.strip()+"'"), row)
             my_cursor.execute(insert +'('+ ', '.join(values) +');' )
             my_cnxn.commit() #must commit unless your sql database auto-commits
