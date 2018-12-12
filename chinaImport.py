@@ -17,7 +17,7 @@ my_cnxn = pymysql.connect(host='localhost', port=3306, user='bkt5031', passwd='P
 my_cursor = my_cnxn.cursor()
 
 
-save_here = 'C:/Users/bkt5031/Desktop/dirPath'
+save_here = 'C:/Users/Admin/Desktop/dirPath'
 filename = 'countries.csv'
 
 r = 'r'
@@ -27,21 +27,30 @@ with open(filename, r) as file:
     completeName = os.path.join(save_here, filename)
     file = open(completeName, w)
     file.write(data)
-    # print (data)
-    file.close()
     
+    # print (data)
+    data.country == 'United States'
+    
+    us = data[data.country == 'United States']
+    china = data[data.country == 'China']
+    print(china)
+    chinaFilename = 'china.csv'
+    
+    chinaName = os.path.join(save_here, chinaFilename)
+    readPlot = open(chinaName, w)
+    readPlot.write()
+    
+    file.close()
 # Compare the population growth in the US and China
-data = pd.read_csv(filename) 
-data.country == 'United States'
+# data = pd.read_csv(filename) 
 
-us = data[data.country == 'United States']
-china = data[data.country == 'China']
-print(us)
-print(china)
+# file.close()
 
-print(us.population / us.population.iloc[0] * 100)
+# print(us)
+# print(china)
 
-plt.plot(us.year, us.population / us.population.iloc[0] * 100, 'o')
+# print(us.population / us.population.iloc[0] * 100)
+
 plt.plot(china.year, china.population / china.population.iloc[0] * 100, 'o')
 plt.legend(['United States', 'China'])
 plt.xlabel('year')
@@ -52,10 +61,12 @@ def insert_records(table, yourcsv, cursor, cnxn):
     #INSERT SOURCE RECORDS TO DESTINATION
     with open(yourcsv) as csvfile:
         csvFile = csv.reader(csvfile, delimiter=',')
+
         header = next(csvFile)
         headers = map((lambda x: x.strip()), header)
         insert = 'INSERT INTO {} ('.format(table) + ', '.join(headers) + ') VALUES '
         for row in csvFile: 
+            
             string_quote = "Cote d'Ivoire"
             newString    = string_quote.replace("Cote d'Ivoire", "Cote d Ivoire")
             values = map((lambda x: "'"+x.strip()+"'"), row)
@@ -66,3 +77,5 @@ table = 'mydb.import'
 mycsv = 'countries.csv' # SET YOUR FILEPATH
 insert_records(table, mycsv, my_cursor, my_cnxn)
 my_cursor.close()
+
+
